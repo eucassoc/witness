@@ -1,7 +1,7 @@
 // What tsutome's reading half needs of node:crypto, for a browser: SHA-256
-// as tlog.js computes it. tsutome-core.js (generated) imports this in place
+// as deedlog.js computes it. tsutome-core.js (generated) imports this in place
 // of node:crypto.
-import { concat, hex, sha256, utf8 } from '../tlog.js';
+import { concat, hex, sha256, utf8 } from '../deedlog.js';
 
 export function createHash(algorithm) {
   if (algorithm !== 'sha256') throw new Error(`${algorithm} is not available here`);

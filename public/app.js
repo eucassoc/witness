@@ -8,7 +8,7 @@
 // passkey.
 // The token in a person's link stays in the fragment; only a value computed
 // from it is sent, to the operator, to ask for that person's records.
-import { anchor as anchorOf, b64, b64url, commitOf, equal, hex, leafHash, merkleRoot, parseVerifier, readChain, sha256, unb64, utf8, verifyCheckpoint } from './tlog.js';
+import { anchor as anchorOf, b64, b64url, commitOf, equal, hex, leafHash, merkleRoot, parseVerifier, readChain, sha256, unb64, utf8, verifyCheckpoint } from './deedlog.js';
 import { challengeFor, unb64url, verifyAssertion } from './webauthn.js';
 
 const app = document.getElementById('app');

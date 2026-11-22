@@ -90,7 +90,7 @@ At the `url` of its registry entry, with `Access-Control-Allow-Origin: *`:
   `body` is what a record is about (its event, its time, its identifiers), as
   the JSON text the record's subject digest is of; the record's line is not
   handed out. It leads to `commit` of the public record `seq` (`commitOf` in
-  [`public/tlog.js`](public/tlog.js)); a record without `anchor` waits for the
+  [`public/deedlog.js`](public/deedlog.js)); a record without `anchor` waits for the
   next interval.
 - `POST /audit/challenge`, then `POST /audit/chain` with a passkey signature
   over the challenge: `{origin, chain, records: [line...], anchors: [{seq, epoch, from, to, size, nonce, pad}]}`.
@@ -268,16 +268,19 @@ npm test                         # the witness, the shared code, the page in a b
 DLOG=/path/to/dlog npm test      # also against deedlog's own tool
 npx wrangler dev --var SITE_ORIGIN:http://localhost:8787
 node test/fixture.mjs            # the page with sample logs, at http://localhost:8930
-npm run vendor                   # after updating tsutome: rebuild public/vendor/tsutome-core.js
+npm run vendor                   # after updating deedlog or tsutome: rebuild public/deedlog.js and public/vendor/tsutome-core.js
 ```
 
 The page tests run in a browser when Playwright is installed, and are skipped
-when it is not. [`public/tlog.js`](public/tlog.js) (SHA-256, the Merkle tree,
-signed notes, checkpoints, cosignatures, anchoring) and
-[`public/webauthn.js`](public/webauthn.js) (checking a passkey's signature)
-have no dependencies and are shared by the witness and the page.
-`public/vendor/tsutome-core.js` is generated from the tsutome package and
-committed, because the site deploys without a build step.
+when it is not. [`public/deedlog.js`](public/deedlog.js) (SHA-256, the Merkle tree,
+signed notes, checkpoints, cosignatures, anchoring) is deedlog's JavaScript
+implementation, the npm package
+[`deedlog`](https://github.com/eucassoc/deedlog/tree/main/js), where it is
+developed and tested; it and [`public/webauthn.js`](public/webauthn.js)
+(checking a passkey's signature) have no dependencies and are shared by the
+witness and the page. `public/deedlog.js` and `public/vendor/tsutome-core.js`
+are generated from the packages and committed, because the site deploys
+without a build step.
 
 ## License
 

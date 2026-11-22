@@ -9,7 +9,7 @@
 // cosigns is a chain of one commitment per interval. `store` is the storage
 // of a Durable Object, or anything with the same `get` / `put` / `delete` /
 // `list({ prefix })`.
-import { SIG_COSIGNATURE, addCheckpoint, b64, generateKey, parseSigner, parseVerifier, unb64 } from '../public/tlog.js';
+import { SIG_COSIGNATURE, addCheckpoint, b64, generateKey, parseSigner, parseVerifier, unb64 } from '../public/deedlog.js';
 import { challengeFor, verifyAssertion } from '../public/webauthn.js';
 
 const CORS = { 'access-control-allow-origin': '*' };

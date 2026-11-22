@@ -1,7 +1,7 @@
 // A passkey for tests: what an authenticator and a browser would produce
 // between them, made with node's own crypto.
 import { webcrypto } from 'node:crypto';
-import { b64, b64url, concat, sha256, utf8 } from '../public/tlog.js';
+import { b64, b64url, concat, sha256, utf8 } from '../public/deedlog.js';
 
 function rawToDer(raw) {
   const int = (v) => {

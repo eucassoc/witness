@@ -11,7 +11,7 @@ import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import * as t from '../public/tlog.js';
+import * as t from '../public/deedlog.js';
 import { challengeFor, verifyAssertion } from '../public/webauthn.js';
 import { Witness } from '../src/witness.js';
 import { passkey } from './passkey.mjs';

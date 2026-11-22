@@ -79,7 +79,7 @@
 - `GET /item?ref=<16進32桁>`、`GET /rules`: `{origin, chain, records: [{body, anchor?: {seq, epoch, size, index, path, nonce, blind, record}}]}`。
   `body` は、記録の内容（出来事、時刻、識別用の番号）です。記録の subject のダイジェストの元になる
   JSON の文字列で、記録の行そのものは渡しません。公開のチェーンの `seq` 番の `commit` に行き着きます
-  （[`public/tlog.js`](public/tlog.js) の `commitOf`）。`anchor` のない記録は、次の区間を待っています。
+  （[`public/deedlog.js`](public/deedlog.js) の `commitOf`）。`anchor` のない記録は、次の区間を待っています。
 - `POST /audit/challenge`、続けて、そのチャレンジへのパスキーの署名をつけた `POST /audit/chain`:
   `{origin, chain, records: [line...], anchors: [{seq, epoch, from, to, size, nonce, pad}]}`。
 - `GET /key`: 検証用の鍵。
@@ -233,14 +233,15 @@ npm test                         # 連署サーバー、共通のコード、ブ
 DLOG=/path/to/dlog npm test      # deedlog のツールとも突き合わせる
 npx wrangler dev --var SITE_ORIGIN:http://localhost:8787
 node test/fixture.mjs            # サンプルの記録つきの確認サイト（http://localhost:8930）
-npm run vendor                   # tsutome を更新したあと: public/vendor/tsutome-core.js を作り直す
+npm run vendor                   # deedlog や tsutome を更新したあと: public/deedlog.js と public/vendor/tsutome-core.js を作り直す
 ```
 
 確認サイトのテストは、Playwright があればブラウザで実行し、なければ飛ばします。
-[`public/tlog.js`](public/tlog.js)（SHA-256、マークル木、署名つきノート、チェックポイント、連署、
-要約）と [`public/webauthn.js`](public/webauthn.js)（パスキーの署名の検証）は依存がなく、
-連署サーバーと確認サイトが共有します。`public/vendor/tsutome-core.js` は tsutome のパッケージから
-生成したもので、コミットしてあります。このサイトはビルドなしでデプロイするためです。
+[`public/deedlog.js`](public/deedlog.js)（SHA-256、マークル木、署名つきノート、チェックポイント、連署、
+要約）は deedlog の JavaScript 版（npm の [`deedlog`](https://github.com/eucassoc/deedlog/tree/main/js)）で、
+開発と試験はそちらでしています。これと [`public/webauthn.js`](public/webauthn.js)（パスキーの署名の検証）は
+依存がなく、連署サーバーと確認サイトが共有します。`public/deedlog.js` と `public/vendor/tsutome-core.js` は
+パッケージから生成したもので、コミットしてあります。このサイトはビルドなしでデプロイするためです。
 
 ## ライセンス
 

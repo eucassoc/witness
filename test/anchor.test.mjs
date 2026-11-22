@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import { randomBytes } from 'node:crypto';
 import { test } from 'node:test';
-import * as t from '../public/tlog.js';
+import * as t from '../public/deedlog.js';
 import { challengeFor, verifyAssertion } from '../public/webauthn.js';
 import { passkey } from './passkey.mjs';
 

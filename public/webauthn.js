@@ -5,7 +5,7 @@
 // What is signed is a challenge: for a login, a value the server made up;
 // for a statement, the hash of the statement. The key is the passkey's
 // public key as SubjectPublicKeyInfo, base64.
-import { b64url, concat, equal, sha256, unb64, utf8 } from './tlog.js';
+import { b64url, concat, equal, sha256, unb64, utf8 } from './deedlog.js';
 
 export const unb64url = (s) => unb64(s.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - (s.length % 4)) % 4));
 

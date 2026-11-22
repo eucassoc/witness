@@ -1,7 +1,7 @@
 // The witness with an in-memory store, as the Durable Object runs it.
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import * as t from '../public/tlog.js';
+import * as t from '../public/deedlog.js';
 import { challengeFor } from '../public/webauthn.js';
 import { Witness } from '../src/witness.js';
 import { passkey } from './passkey.mjs';
